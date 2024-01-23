@@ -18,4 +18,4 @@
 
 # training_result_diagrams:
 ## This is where graph representations of the training processes of each of the driver scripts are stored
-![Screenshot](training_results_diagrams/shallownet_cifar10.png)
+![Screenshot](training_result_diagrams/shallownet_cifar10.png)
