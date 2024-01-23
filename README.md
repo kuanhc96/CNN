@@ -14,7 +14,8 @@
 1. classify_image.py: used to access pretrained models and architectures implemented by experts, such as VGGNet
 2. load_model.py: used to demonstrate how to load the weights of a model that can be later used for predictions
 3. visualize_net.py: used to demonstrate how to generate a png that depicts the structure of a CNN
-4. test_script.py: just a scrach pad script. Used to demonstrate the functionality of the `image_to_array` and `array_to_image` functions of tensorflow.keras
+4. cifar10_checkpoint_improvements.py: used to demonstrate how to incorporate callbacks in the middle of training to save weights in the middle of training
+5. test_script.py: just a scrach pad script. Used to demonstrate the functionality of the `image_to_array` and `array_to_image` functions of tensorflow.keras
 
 # MiniVGGNet visualized:
 ![Screenshot](MiniVGGArchitecture.png)
