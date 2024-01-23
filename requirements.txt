@@ -1,0 +1,8 @@
+opencv-contrib-python
+argparse
+numpy
+scikit-image=0.18.1
+matplotlib
+tensorflow
+graphviz
+pydot
