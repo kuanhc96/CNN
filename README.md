@@ -25,9 +25,11 @@
 ![Screenshot](training_result_diagrams/shallownet_cifar10.png)
 2. LeNet on MNIST: low amount of overfitting with validation accuracy of ~98%
 - batch_size = 64; epochs = 20
+
 ![Screenshot](training_result_diagrams/lenet_batchsize64_epochs20.png)
 3. MiniVGGNet on CIFAR10: high amount of overfitting with validation accuracy of ~86%
 - batch_size = 64; epochs = 40; momentum = 0.9; nesterov = True; includes learning_rate decay
+
 ![Screenshot](training_result_diagrams/minivggnet_batchsize64_epochs40_decay_momentum_nesterov_normalization.png)
 
 # weights:
