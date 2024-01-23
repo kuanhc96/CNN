@@ -19,24 +19,24 @@ class MiniVGGNet:
         # CONV => ACT => BN
         model.add(Conv2D(filters=32, kernel_size=(3, 3), padding="same", input_shape=input_shape))
         model.add(Activation("relu"))
-        # model.add(BatchNormalization(axis=channel_dim))
+        model.add(BatchNormalization(axis=channel_dim))
 
         # CONV => ACT => BN => POOL => DROPOUT
         model.add(Conv2D(filters=32, kernel_size=(3, 3), padding="same"))
         model.add(Activation("relu"))
-        # model.add(BatchNormalization(axis=channel_dim))
+        model.add(BatchNormalization(axis=channel_dim))
         model.add(MaxPooling2D(pool_size=(2, 2)))
         model.add(Dropout(0.25))
 
         # CONV => ACT => BN
         model.add(Conv2D(filters=64, kernel_size=(3, 3), padding="same"))
         model.add(Activation("relu"))
-        # model.add(BatchNormalization(axis=channel_dim))
+        model.add(BatchNormalization(axis=channel_dim))
 
         # CONV => ACT => BN => POOL => DROPOUT
         model.add(Conv2D(filters=64, kernel_size=(3, 3), padding="same"))
         model.add(Activation("relu"))
-        # model.add(BatchNormalization(axis=channel_dim))
+        model.add(BatchNormalization(axis=channel_dim))
         model.add(MaxPooling2D(pool_size=(2, 2)))
         model.add(Dropout(0.25))
 
@@ -44,7 +44,7 @@ class MiniVGGNet:
         model.add(Flatten())
         model.add(Dense(units=512))
         model.add(Activation("relu"))
-        # model.add(BatchNormalization(axis=channel_dim))
+        model.add(BatchNormalization(axis=channel_dim))
         model.add(Dropout(0.5))
         # Flatten is not needed, since the inputs were already flattened
 
