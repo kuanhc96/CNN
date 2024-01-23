@@ -16,6 +16,9 @@
 3. visualize_net.py: used to demonstrate how to generate a png that depicts the structure of a CNN
 4. test_script.py: just a scrach pad script. Used to demonstrate the functionality of the `image_to_array` and `array_to_image` functions of tensorflow.keras
 
+# MiniVGGNet visualized:
+![Screenshot](MiniVGGArchitecture.png)
+
 # training_result_diagrams:
 ### This is where graph representations of the training processes of each of the driver scripts are stored
 1. ShallowNet on CIFAR10: high amount of overfitting with validation accuracy of ~58%
