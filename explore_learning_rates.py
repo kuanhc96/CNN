@@ -74,5 +74,6 @@ for current_strategy, current_strategy_name in zip( learning_rate_strategies, le
     plt.legend()
     plt.savefig(os.path.join(args["train-output"], current_strategy_name + ".png"))
     
-    strategy.plot(N, title=current_strategy_name)
-    plt.savefig(os.path.join(args["lr-output"], current_strategy_name + ".png"))
+    if current_strategy_name != "default":
+        strategy.plot(N, title=current_strategy_name)
+        plt.savefig(os.path.join(args["lr-output"], current_strategy_name + ".png"))
