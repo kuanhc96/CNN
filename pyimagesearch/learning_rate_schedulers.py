@@ -20,7 +20,7 @@ class StepDecay(LearningRateDecay):
 
     def __call__(self, epoch):
         exponent = np.floor(( epoch + 1 ) / self.drop_interval)
-        return float(self.learning_rate / self.factor ** ( exponent )) 
+        return float(self.learning_rate * self.factor ** ( exponent )) 
 
 class PolynomialDecay(LearningRateDecay):
     def __init__(self, max_epochs=100, initial_learning_rate=0.01, power=1.0):
