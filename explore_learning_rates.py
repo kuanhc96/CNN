@@ -20,7 +20,7 @@ ap.add_argument("-t", "--train-output", type=str, default="./training_result_dia
 args = vars(ap.parse_args())
 
 learning_rate_strategies = [None]
-learning_rate_strategy_names = ["no decay", "step-factor=0.5", "step-factor=0.25", "linear", "polynomial=5"]
+learning_rate_strategy_names = ["constant_decay", "step-factor=0.5", "step-factor=0.25", "linear", "polynomial=5"]
 ((trainX, trainY), (testX, testY)) = cifar10.load_data()
 trainX = trainX.astype("float") / 255.0
 testX = testX.astype("float") / 255.0
@@ -46,8 +46,8 @@ learning_rate_strategies.append(strategy)
 for current_strategy, current_strategy_name in zip( learning_rate_strategies, learning_rate_strategy_names ):
 
     optimizer = None
-    if current_strategy_name == "standard":
-        callbacks = []
+    if current_strategy_name == "constant_decay":
+        callbacks = None
         optimizer = SGD(learning_rate = 0.1, momentum=0.9, weight_decay=0.0 / args["epochs"])
     else:
         callbacks = [LearningRateScheduler(current_strategy)]
