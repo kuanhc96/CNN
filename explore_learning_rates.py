@@ -15,12 +15,12 @@ import os
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-e", "--epochs", type=int, default=100, help="# of epochs to for training")
-ap.add_argument("-l", "--lr-output", type="str", default="./lr-output", help="output path to store learning rate plots")
-ap.add_argument("-t", "--train-output", type="str", default="./training_result_diagrams", help="output path to store training result diagrams")
+ap.add_argument("-l", "--lr-output", type=str, default="./lr-output", help="output path to store learning rate plots")
+ap.add_argument("-t", "--train-output", type=str, default="./training_result_diagrams", help="output path to store training result diagrams")
 args = vars(ap.parse_args())
 
-learning_rate_strategies = []
-learning_rate_strategy_names = ["step-factor=0.5", "step-factor=0.25", "linear", "polynomial=5"]
+learning_rate_strategies = [None]
+learning_rate_strategy_names = ["no decay", "step-factor=0.5", "step-factor=0.25", "linear", "polynomial=5"]
 ((trainX, trainY), (testX, testY)) = cifar10.load_data()
 trainX = trainX.astype("float") / 255.0
 testX = testX.astype("float") / 255.0
@@ -44,8 +44,15 @@ strategy = PolynomialDecay(max_epochs=args["epochs"], initial_learning_rate=0.1,
 learning_rate_strategies.append(strategy)
 
 for current_strategy, current_strategy_name in zip( learning_rate_strategies, learning_rate_strategy_names ):
-    callbacks = [LearningRateScheduler(current_strategy)]
-    optimizer = SGD(learning_rate = 0.1, momentum=0.9, decay=0.0)
+
+    optimizer = None
+    if current_strategy_name == "standard":
+        callbacks = []
+        optimizer = SGD(learning_rate = 0.1, momentum=0.9, weight_decay=0.0 / args["epochs"])
+    else:
+        callbacks = [LearningRateScheduler(current_strategy)]
+        optimizer = SGD(learning_rate = 0.1, momentum=0.9, weight_decay=0.0)
+
     model = MiniVGGNet.build(32, 32, 3, 10)
     model.compile(loss="categorical_crossentropy", optimizer=optimizer, metrics=["accuracy"])
 
