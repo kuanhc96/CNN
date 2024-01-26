@@ -48,7 +48,7 @@ for current_strategy, current_strategy_name in zip( learning_rate_strategies, le
     optimizer = None
     if current_strategy_name == "constant_decay":
         callbacks = None
-        optimizer = SGD(learning_rate = 0.1, momentum=0.9, weight_decay=0.0 / args["epochs"])
+        optimizer = SGD(learning_rate = 0.1, momentum=0.9, weight_decay=0.1 / args["epochs"])
     else:
         callbacks = [LearningRateScheduler(current_strategy)]
         optimizer = SGD(learning_rate = 0.1, momentum=0.9, weight_decay=0.0)
