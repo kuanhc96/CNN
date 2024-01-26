@@ -9,13 +9,17 @@
 1. shallownet_cifar10.py: a driver script for training the ShallowNet CNN on the CIFAR10 dataset 
 2. lenet_mnist.py: a driver script for training the LeNet CNN on the MNIST dataset
 3. minivggnet_cifar10.py: a driver script for training the miniVGGNet CNN on the CIFAR10 dataset 
+4. cifar10_checkpoint_improvements.py: a driver script that utilizes callback checkpoints while training MiniVGGNet
+5. explore_learning_rates.py: a driver script that will compare the training results of MiniVGGNet on CIFAR10 using various different learning rate decay strategies
 
 # Other utility functions:
 1. classify_image.py: used to access pretrained models and architectures implemented by experts, such as VGGNet
 2. load_model.py: used to demonstrate how to load the weights of a model that can be later used for predictions
 3. visualize_net.py: used to demonstrate how to generate a png that depicts the structure of a CNN
 4. cifar10_checkpoint_improvements.py: used to demonstrate how to incorporate callbacks in the middle of training to save weights in the middle of training
-5. test_script.py: just a scrach pad script. Used to demonstrate the functionality of the `image_to_array` and `array_to_image` functions of tensorflow.keras
+5. explore_learning_rates.py: This script should most certalinly be run with a GPU. This script is meant to explore how different learning rate decay strategies will affect the accuracy/loss of a model (in this case, miniVGG) when trained on the CIFAR10 dataset. In this script, the "default" learning rate decay strategy implemented by tensorflow is compared to "step-wise" strategies, the "linear" strategy, and the "polynomial" strategy.
+6. test_script.py: just a scrach pad script. Used to demonstrate the functionality of the `image_to_array` and `array_to_image` functions of tensorflow.keras
+7. pyimagesearch/learning_rate_schedulers.py: Using inheritance, this script implements the LearningRateSchedule class and its subclasses, allowing the user to compare these learning rate strategies with each other for optimal training results
 
 # MiniVGGNet visualized:
 ![Screenshot](MiniVGGArchitecture.png)
